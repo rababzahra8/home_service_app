@@ -1,7 +1,10 @@
 // application.js
+import Rails from "@rails/ujs";
+import { Turbo } from "@hotwired/turbo-rails";
 
-// Import Turbo Rails
-import "@hotwired/turbo-rails"
+Rails.start();
+Turbo.start();
+
 
 // Import your controllers
 import "controllers"

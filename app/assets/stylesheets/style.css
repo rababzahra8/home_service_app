@@ -37,8 +37,6 @@ a.more {
 
 .custom-navbar {
   background: #3b5d50 !important;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 .custom-navbar .navbar-brand {
   font-size: 32px;
@@ -365,7 +363,18 @@ a.more {
 .why-choose-section .img-wrap img {
   border-radius: 20px;
 }
+.navbar-logo {
+  /* display: inline-block; */
+  /* position: relative; */
+  width: 60px;
+  height: auto;
+}
 
+.navbar-logo-name {
+  color: white;
+  opacity: 1 !important;
+  font-size: 18px;
+}
 .feature {
   margin-bottom: 30px;
 }
@@ -400,7 +409,8 @@ a.more {
 .we-help-section .imgs-grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+    1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: repeat(27, 1fr);
   position: relative;
 }
