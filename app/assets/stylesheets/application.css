@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "style.css";
+@import "style.scss";
+@import "bootstrap.min.css";
+@import "tiny-slider.css";
