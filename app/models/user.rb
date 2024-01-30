@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable, :trackable
 
-  # has_many :services, dependent: :destroy
-  # has_many :reviews, dependent: :destroy
+  has_many :services, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :categories, dependent: :destroy
 end

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
+module Users
+  class SessionsController < Devise::SessionsController
+    protected
 
-  protected
-
-  def after_sign_in_path_for(resource)
-    root_path
+    def after_sign_in_path_for(_resource)
+      root_path
+    end
   end
 end

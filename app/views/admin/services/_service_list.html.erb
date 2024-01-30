@@ -1,0 +1,10 @@
+<!-- app/views/admin/services/_service_list.html.erb -->
+<% @services.each do |service| %>
+  <%= turbo_frame_tag "service_#{service.id}" do %>
+    <div class="bg-white p-4 my-4 border rounded shadow-md">
+      <h2 class="text-lg font-bold mb-2"><%= service.title %></h2>
+      <p class="text-sm text-gray-700 mb-2">Status: <%= service.status %></p>
+      <%= render 'admin/services/service_form', service: service %>
+    </div>
+  <% end %>
+<% end %>

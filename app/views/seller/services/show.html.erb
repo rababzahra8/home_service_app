@@ -1,0 +1,9 @@
+<!-- app/views/seller/services/show.html.erb -->
+<div class="bg-gradient-to-r from-green-400 to-yellow-500 p-8 text-white">
+  <h1 class="text-3xl font-bold mb-4">Service Details</h1>
+  <p class="mb-2"><%= @service.title %> - Status: <%= @service.status %></p>
+  <% @reviews.each do |review| %>
+    <p class="mb-2"><%= review.comment %></p>
+  <% end %>
+</div>
+

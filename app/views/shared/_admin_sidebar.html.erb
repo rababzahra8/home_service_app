@@ -1,0 +1,16 @@
+<nav class="w-74 bg-[#3b5d50] h-full p-4">
+  <!-- Logo -->
+  <div class="mb-8">
+    <%= link_to root_path do %>
+      <%= image_tag('homelyhelp.png', class: 'mx-auto') %>
+    <% end %>
+  </div>
+
+  <ul class="space-y-2">
+    <li><%= link_to 'Categories', admin_categories_path, class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'categories-link' %></li>
+    <li><%= link_to 'Services',   admin_services_path, class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'service-requests-link' %></li>
+    <li><%= link_to 'Approved Requests', '#', class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'approved-requests-link' %></li>
+    <li><%= link_to 'All Services', '#', class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'all-services-link' %></li>
+    <!-- Add more options as needed -->
+  </ul>
+</nav>

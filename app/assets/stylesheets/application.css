@@ -20,6 +20,7 @@
 .main-container {
   padding-top: 50px;
   background: #3b5d50;
+  padding-bottom: 50px;
 }
 .notice,
 .alert {
@@ -45,13 +46,19 @@
   color: #3b5d50;
 }
 
-/* Add this to your CSS */
 .hidden {
   display: none !important;
 }
+
 .btn-logout {
-  background-color: transparent !important;;
+  background-color: transparent !important;
   color: yellow;
   width: 60px;
   height: 20px;
+}
+
+.dashboard-container {
+  padding-left: 130px;
+  padding-top: 130px;
+  padding-right: 130px;
 }

@@ -2,13 +2,22 @@
 
 Rails.application.routes.draw do
   root 'home#index'
-  # devise_scope :user do
-  #   get 'signup', to: 'users/registrations#new', as: :new_user_registration
-  #   post 'signup', to: 'users/registrations#create', as: :user_registration
-  #   get 'app/account', to: 'users/registrations#edit', as: :edit_user_registration
-  #   patch 'app/account', to: 'users/registrations#update', as: :update_user_registration
-  # end
 
+  namespace :admin do
+    resources :categories
+    get 'dashboard/index'
+    resources :services do
+      member do
+        put :update_status
+      end
+      get ':status', action: :index, on: :collection, as: :filter, constraints: { status: /(new|approved|rejected)/ }
+    end
+  end
+
+  namespace :seller do
+    get 'dashboard/index'
+    resources :services
+  end
   devise_for :users, path: '', path_names: { sign_in: 'login' },
                      controllers: { sessions: 'users/sessions', passwords: 'users/passwords' }
 end
