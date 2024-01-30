@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string :encrypted_password, null: false, default: ''
       t.string :name, null: false, default: ''
       t.integer :age, null: false, default: 0
-      t.string "gender", null: false
+      t.string 'gender', null: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -46,6 +46,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
     add_index :users, :role
-
   end
 end

@@ -1,0 +1,8 @@
+<div class="flash-msg position-fixed top-0 start-50 w-100">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible mb-1">
+      <%= value.to_s.html_safe %>
+      <button class="btn-close btn-close-black position-absolute top-0 end-0 bottom-0" data-bs-dismiss="alert" data-bs-target=".flash-msg"></button>
+    </div>
+  <% end %>
+</div>

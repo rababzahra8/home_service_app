@@ -194,7 +194,7 @@ Devise.setup do |config|
   # Defines which strategy will be used to lock an account.
   # :failed_attempts = Locks an account after a number of failed attempts to sign in.
   # :none            = No lock strategy. You should handle locking by yourself.
-  
+
   config.lock_strategy = :failed_attempts
   config.maximum_attempts = 5
   config.unlock_in = 5.minutes

@@ -17,3 +17,41 @@
 @import "style.scss";
 @import "bootstrap.min.css";
 @import "tiny-slider.css";
+.main-container {
+  padding-top: 50px;
+  background: #3b5d50;
+}
+.notice,
+.alert {
+  text-align: center;
+  padding: 15px;
+  margin: 0;
+  width: 300px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.notice {
+  background-color: #ebfffc;
+  color: #3b5d50;
+}
+
+.alert {
+  background-color: rgb(255, 255, 185);
+  color: #3b5d50;
+}
+
+/* Add this to your CSS */
+.hidden {
+  display: none !important;
+}
+.btn-logout {
+  background-color: transparent !important;;
+  color: yellow;
+  width: 60px;
+  height: 20px;
+}
