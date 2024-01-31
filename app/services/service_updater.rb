@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/services/service_updater.rb
 
 class ServiceUpdater

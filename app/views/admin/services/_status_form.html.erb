@@ -1,3 +1,25 @@
-<%= form_tag admin_service_path(service), method: :patch do %>
-  <%= select_tag 'service[status]', options_for_select(['pending', 'approved', 'rejected'], selected: service.status), class: 'form-select my-1', onchange: 'this.form.submit()' %>
+<%= form_for(service, url: admin_service_path(service), method: :patch) do |form| %>
+  <%= form.hidden_field :status, value: 'approved' %>
+  <% if service.pending? %>
+    <%= form.submit 'Approve', class: 'btn btn-success ml-2' %>
+      <%= button_tag 'Reject', type: 'button', class: 'btn btn-danger ml-2 btn-reject', data: { bs_toggle: 'modal', bs_target: '#rejectionModal' } if service.pending? || service.rejected? %>
+  <% end %>
 <% end %>
+<div class="modal fade" id="rejectionModal" tabindex="-1" aria-labelledby="rejectionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rejectionModalLabel">Provide a reason for rejection</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_tag(admin_service_path(service), method: :patch, id: 'rejectionModalForm') do %>
+          <%= hidden_field_tag 'service[status]', 'rejected' %>
+          <%= text_area_tag 'service[rejection_reason]', nil, class: 'form-input block w-full mt-2', rows: 3, placeholder: 'Enter reason for rejection' %>
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

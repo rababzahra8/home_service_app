@@ -55,7 +55,7 @@ Rails.application.configure do
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new($stdout)
-                                       .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+                                       .tap  { |logger| logger.formatter = Logger::Formatter.new }
                                        .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
@@ -100,12 +100,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   config.cache_classes = false
   config.action_mailer.smtp_settings = {
-    address: ENV['SMTP_ADDRESS'],
-    port: ENV['SMTP_PORT'],
-    domain: ENV['SMTP_DOMAIN'],
-    user_name: ENV['SMTP_USER_NAME'],
-    password: ENV['SMTP_PASSWORD'],
-    authentication: ENV['SMTP_AUTHENTICATION'],
-    enable_starttls_auto: ENV['SMTP_ENABLE_STARTTLTS']
+    address: ENV.fetch('SMTP_ADDRESS', nil),
+    port: ENV.fetch('SMTP_PORT', nil),
+    domain: ENV.fetch('SMTP_DOMAIN', nil),
+    user_name: ENV.fetch('SMTP_USER_NAME', nil),
+    password: ENV.fetch('SMTP_PASSWORD', nil),
+    authentication: ENV.fetch('SMTP_AUTHENTICATION', nil),
+    enable_starttls_auto: ENV.fetch('SMTP_ENABLE_STARTTLTS', nil)
   }
 end

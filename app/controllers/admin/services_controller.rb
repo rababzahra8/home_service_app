@@ -1,26 +1,24 @@
+# frozen_string_literal: true
+
 class Admin::ServicesController < Admin::DashboardController
   before_action :authenticate_admin!
-  before_action :set_service, only: %i[update show_rejected show]
+  before_action :set_service, only: [:update]
 
   def index
     @services = Service.all
+    # @reapproval_requests = Service.where(status: 'reapproval')
   end
 
-  def show
-  end
-  
   def update
     if @service.update(service_params)
-
-      redirect_to admin_services_path, notice: 'Service status updated successfully.'
-
+      if @service.rejected?
+        redirect_to admin_services_path, notice: 'Service rejected successfully.'
+      else
+        redirect_to admin_services_path, notice: 'Service status updated successfully.'
+      end
     else
       redirect_to admin_services_path, alert: 'Failed to update service status.'
     end
-  end
-
-  def show_rejected
-    # Specific logic for show_rejected if needed
   end
 
   private
@@ -30,6 +28,6 @@ class Admin::ServicesController < Admin::DashboardController
   end
 
   def service_params
-    params.require(:service).permit(:status, :comment)
+    params.require(:service).permit(:status, :rejection_reason, :reapproval_request)
   end
 end

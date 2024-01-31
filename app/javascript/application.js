@@ -11,4 +11,11 @@ import "custom";
 import { flashMsgInit } from "./src/flashMessages";
 document.addEventListener("turbo:load", () => {
   flashMsgInit();
+  const rejectionModal = new bootstrap.Modal(document.getElementById('rejectionModal'));
+  document.body.addEventListener("click", (event) => {
+    const rejectButton = event.target.closest(".btn-reject");
+    if (rejectButton) {
+      rejectionModal.show();
+    }
+  });
 });
