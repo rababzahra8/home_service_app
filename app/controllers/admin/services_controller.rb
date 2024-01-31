@@ -1,38 +1,29 @@
-# app/controllers/admin/services_controller.rb
 class Admin::ServicesController < Admin::DashboardController
   before_action :authenticate_admin!
-  before_action :set_services, only: %i[index update_status]
+  before_action :set_service, only: %i[update show_rejected show]
 
   def index
-    respond_to do |format|
-      format.html
-      format.turbo_stream # Add this line to handle Turbo Streams
+    @services = Service.all
+  end
+
+  def show
+  end
+  
+  def update
+    if @service.update(service_params)
+
+      redirect_to admin_services_path, notice: 'Service status updated successfully.'
+
+    else
+      redirect_to admin_services_path, alert: 'Failed to update service status.'
     end
   end
 
-  def update_status
-    set_service
-    if @service.update(service_params)
-      render turbo_stream: turbo_stream.replace(@service, partial: 'admin/services/service_item', locals: { service: @service })
-    else
-      render 'index'
-    end
+  def show_rejected
+    # Specific logic for show_rejected if needed
   end
 
   private
-
-  def set_services
-    case params[:status]
-    when 'new'
-      @services = Service.where(status: 'pending')
-    when 'approved'
-      @services = Service.where(status: 'approved')
-    when 'rejected'
-      @services = Service.where(status: 'rejected')
-    else
-      @services = Service.all
-    end
-  end
 
   def set_service
     @service = Service.find(params[:id])

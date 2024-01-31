@@ -1,0 +1,3 @@
+<%= form_tag admin_service_path(service), method: :patch do %>
+  <%= select_tag 'service[status]', options_for_select(['pending', 'approved', 'rejected'], selected: service.status), class: 'form-select my-1', onchange: 'this.form.submit()' %>
+<% end %>

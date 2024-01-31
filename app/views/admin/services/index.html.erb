@@ -1,6 +1,5 @@
 <!-- app/views/admin/services/index.html.erb -->
+
 <h1>All Services</h1>
 
-<%= turbo_frame_tag 'admin_services' do %>
-  <%= render 'admin/services/service_list', services: @services %>
-<% end %>
+<%= render partial: 'services_table', locals: { services: @services } %>

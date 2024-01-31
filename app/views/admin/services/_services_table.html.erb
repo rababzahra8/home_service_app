@@ -1,0 +1,24 @@
+<!-- app/views/admin/services/_services_table.html.erb -->
+
+<table class="min-w-full bg-white border border-gray-300">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">Title</th>
+      <th class="py-2 px-4 border-b">Status</th>
+      <th class="py-2 px-4 border-b">Actions</th>
+      <th class="py-2 px-4 border-b">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @services.each do |service| %>
+      <tr data-id="<%= service.id %>">
+        <td class="py-2 px-4 border-b"><%= service.title %></td>
+        <td class="py-2 px-4 border-b"><%= service.status %></td>
+        <td class="py-2 px-4 border-b">
+          <%= render 'status_form', service: service %>
+        </td>
+        <td class="py-2 px-4 border-b"><%= service.comment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

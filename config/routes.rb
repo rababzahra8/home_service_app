@@ -6,12 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories
     get 'dashboard/index'
-    resources :services do
-      member do
-        put :update_status
-      end
-      get ':status', action: :index, on: :collection, as: :filter, constraints: { status: /(new|approved|rejected)/ }
-    end
+    resources :services, only: %i[index show update]
   end
 
   namespace :seller do
