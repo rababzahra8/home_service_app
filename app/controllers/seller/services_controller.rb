@@ -43,6 +43,6 @@ class Seller::ServicesController < Seller::DashboardController
   end
 
   def service_params
-    params.require(:service).permit(:title, :description, :category_id, :price, :reapproval_request, :rejection_reason)
+    params.require(:service).permit(:title, :description, :category_id, :price, :reapproval_request, :rejection_reason, :avatar)
   end
 end

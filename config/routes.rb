@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  get 'home/all_services', to: 'home#all_services', as: 'all_services'
+
   namespace :admin do
     resources :categories
     get 'dashboard/index'
