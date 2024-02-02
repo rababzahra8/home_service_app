@@ -4,7 +4,7 @@
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Your Comfort, <br>Our Commitment. </h1>
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Bringing Quality Home Services to Your Doorstep. </p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                <a href="/all_services" class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                <a href="/home/all_services" class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                     <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"></svg>Explore Services
                 </a> 
             </div>
@@ -15,9 +15,12 @@
     </div>
 </section>
 <section class="bg-gray-50 dark:bg-gray-800">
-  <div class="max-w-screen-xl px-4 py-8 mx-auto flex space-x-4 overflow-x-auto lg:space-y-20 lg:py-24 lg:px-6">
-    <% @services.each do |service| %>
-      <div class="mx-2 mt-4 flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
+    <h2 class="text-3xl font-semibold mb-8 text-neutral-800 dark:text-neutral-50">TOP SERVICES</h2>
+
+    <div class="flex space-x-4 overflow-x-auto lg:space-y-20">
+      <% @services.each do |service| %>
+        <div class="mx-2 mt-4 flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
         <div class="relative overflow-hidden rounded-t-lg" style="padding-top: 60%;">
           <%= image_tag service.avatar, class: "absolute inset-0 w-full h-full object-cover" if service.avatar.attached? %>
         </div>
@@ -32,13 +35,13 @@
           <div class="flex justify-between items-center border-t-2 border-neutral-100 px-2 py-2 dark:border-neutral-600 dark:text-neutral-50">
             <span>Status: <%= service.status %></span>
             <div class="flex">
-              <%= link_to 'Show',"#", class: 'text-blue-500 underline mr-2' %>
-              <%= link_to 'Book Now', "#", class: 'text-green-500 underline' %>
+              <%= link_to 'Show', service_path(service), class: 'text-blue-500 underline mr-2' %>
+
             </div>
           </div>
-        </div>
       </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
-

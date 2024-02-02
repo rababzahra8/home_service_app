@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
     authenticate_user!
     redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user.admin?
   end
+
+  def authenticate_customer!
+    authenticate_user!
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user.customer?
+  end
+
 end

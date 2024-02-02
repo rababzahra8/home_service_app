@@ -21,8 +21,10 @@
     <%= render partial: "shared/navbar" %>
     <%= render 'shared/flash_messages' if flash.any? %>
     <div class="main-container">
-      <%= yield %>
+      <div class="mb-8"> <!-- Add margin to the bottom of the yield content -->
+        <%= yield %>
+      </div>
     </div>
-    <%= render partial: "shared/footer" %>
+    <%# <%= render partial: "shared/footer" %>
   </body>
 </html>

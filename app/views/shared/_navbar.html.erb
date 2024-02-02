@@ -15,7 +15,10 @@
                 <li>
                     <%= link_to("Home", root_path, class: "nav-link") %>
                 </li>
-                <% if user_signed_in? %>
+
+
+            
+            <% if user_signed_in? %>
                     <% if current_user.admin? %>
                         <%= link_to("Admin", admin_dashboard_index_path, class: "nav-link") %>
                     <% elsif current_user.seller? %> 
@@ -24,18 +27,23 @@
                         <%= link_to("Customer", "#", class: "nav-link") %>
                     <% end %>
                 <% end %>
+                
                 <li>
                     <%= link_to("Services", all_services_path, class: "nav-link") %>
                 </li>
             </ul>
             <!-- Logout / Login Button -->
             <div>
-                <% if user_signed_in? %>
-                    <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn-logout" %>
-                <% else %>
-                    <%= link_to "Log In", new_user_session_path, class: "btn-login" %>
-                <% end %>
+               <div>
+  <% if user_signed_in? %>
+    <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "px-4 py-2 bg-[#910A67] bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800 btn-logout" %>
+  <% else %>
+    <%= link_to "Log In", new_user_session_path, class: "px-4 py-2 bg-[#910A67] text-white rounded-md hover:bg-[#7A0958] focus:outline-none focus:shadow-outline-purple active:bg-[#5E0844] btn-login" %>
+  <% end %>
+</div>
+
             </div>
         </div>
     </nav>
 </header>
+

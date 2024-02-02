@@ -1,0 +1,22 @@
+<h2 class="text-2xl font-bold mb-4">Booking Table</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+  <% bookings.each do |booking| %>
+    <div class="max-w-sm bg-white p-6 rounded-md shadow-md">
+      <!-- Booking Image (Replace 'image' with your actual attribute) -->
+      <%= image_tag booking.service.avatar, class: 'w-full h-32 object-cover mb-4 rounded-md' %>
+
+      <p class="text-lg font-semibold">User: <%= booking.user.name %></p>
+      <p class="text-gray-600">Email: <%= booking.user.email %></p>
+      <p class="text-lg font-semibold mt-2">Service: <%= booking.service.title %></p>
+      <p class="text-gray-600">Description: <%= booking.service.description %></p>
+      <p class="text-lg font-semibold mt-2">Status: <%= booking.status %></p>
+
+      <% if booking.status == 'pending' %>
+        <div class="flex mt-4">
+          <%= button_to 'Approve', seller_booking_path(booking, status: 'approved'), method: :patch, class: 'bg-green-500 text-white px-4 py-2 rounded mr-2' %>
+          <%= button_to 'Reject', seller_booking_path(booking, status: 'rejected'), method: :patch, class: 'bg-red-500 text-white px-4 py-2 rounded' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
