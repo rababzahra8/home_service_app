@@ -1,5 +1,5 @@
 class Seller::ServicesController < Seller::DashboardController
-  before_action :authenticate_user!, only: %i[create destroy]
+  before_action :authenticate_seller!, only: %i[create destroy]
   before_action :set_service, only: %i[show destroy reapprove]
 
   def index

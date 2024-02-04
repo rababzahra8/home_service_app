@@ -1,5 +1,5 @@
-<div class="bg-[#3b5d50] text-white w-full h-full flex items-center justify-center">
-  <div class="w-full max-w-md p-6 mb-10 rounded border border-white shadow-lg">
+<div class="w-full h-full flex items-center justify-center add-top-padding">
+  <div class="w-full max-w-md p-6 mb-10 rounded border border-white shadow-lg bg-[#030637] text-white ">
     <h2 class="text-2xl font-bold mb-4">Log in</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -18,7 +18,7 @@
         </div>
       <% end %>
       <div class="actions">
-        <%= f.submit "Log in", class: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800" %>
+        <%= f.submit "Log in", class: "px-4 py-2 bg-white text-black rounded-md hover:bg-[#7A0958] focus:outline-none focus:shadow-outline-purple active:bg-[#5E0844] btn-login" %>
       </div>
     <% end %>
     <%= render "devise/shared/links" %>

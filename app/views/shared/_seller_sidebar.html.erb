@@ -1,35 +1,30 @@
-<nav class="w-84 bg-[#3b5d50] h-full p-4">
-  <div class="flex items-center justify-center mb-8">
+
+<nav class="w-64 bg-[#030637] h-full p-4 pt-30">
+  <!-- Logo -->
+  <div class="mb-6 text-center">
     <%= link_to root_path do %>
-      <%= image_tag('homelyhelp.png', class: 'mr-2') %> <!-- Added mr-2 for right margin -->
-      <p class="text-white font-bold">Homely Home</p>
+      <%= image_tag('logo-home.svg', class: 'mx-auto h-5') %>
     <% end %>
   </div>
-    <ul class="space-y-2 text-left">
-      <li>
-        <%= link_to seller_services_path, class: 'flex items-center py-2 px-4 text-white font-bold hover:bg-gray-700', id: 'service-requests-link' do %>
-          <%= image_tag('services.png', class: 'mr-2 w-6 h-6') %> <!-- Adjust image size as needed -->
-          <span class="text-white font-bold">Services</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to seller_bookings_path, class: 'flex items-center py-2 px-4 text-white font-bold hover:bg-gray-700', id: 'service-requests-link' do %>
-          <%= image_tag('approved.png', class: 'mr-2 w-6 h-6') %> <!-- Adjust image size as needed -->
-          <span>Bookings</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '#', class: 'flex items-center py-2 px-4 text-white font-bold hover:bg-gray-700', id: 'approved-requests-link' do %>
-          <%= image_tag('request.png', class: 'mr-2 w-6 h-6') %> <!-- Adjust image size as needed -->
-          <span>Requested Services</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '#', class: 'flex items-center py-2 px-4 text-white font-bold hover:bg-gray-700', id: 'all-services-link' do %>
-          <%= image_tag('rejected.png', class: 'mr-2 w-6 h-6') %> <!-- Adjust image size as needed -->
-          <span>Rejected Services</span>
-        <% end %>
-      </li>
-      <!-- Add more options as needed -->
-    </ul>
+  <ul class="space-y-4">
+    <li>
+      <%= link_to seller_services_path, class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'service-requests-link' do %>
+        <i class="fas fa-tools text-lg mr-2"></i>
+        Services
+      <% end %>
+    </li>
+    <li>
+      <%= link_to seller_bookings_path , class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'approved-requests-link' do %>
+        <i class="fas fa-check-circle text-lg mr-2"></i>
+        Bookings
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'all-services-link' do %>
+        <i class="fas fa-list-alt text-lg mr-2"></i>
+        All Services
+      <% end %>
+    </li>
+    <!-- Add more options as needed -->
+  </ul>
 </nav>
