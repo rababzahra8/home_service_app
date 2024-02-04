@@ -6,10 +6,22 @@ class Admin::ServicesController < Admin::DashboardController
 
   def index
     @services = Service.all
-    # @reapproval_requests = Service.where(status: 'reapproval')
   end
 
   def update
+    if @service.update(service_params)
+      if @service.rejected?
+        redirect_to admin_services_path, notice: 'Service rejected successfully.'
+      else
+        redirect_to admin_services_path, notice: 'Service status updated successfully.'
+      end
+    else
+      redirect_to admin_services_path, alert: 'Failed to update service status.'
+    end
+  end
+
+  def reapproval_servic
+    @reapproval_requests = Service.where(status: 'reapproval')
     if @service.update(service_params)
       if @service.rejected?
         redirect_to admin_services_path, notice: 'Service rejected successfully.'

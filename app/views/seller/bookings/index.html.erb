@@ -1,0 +1,24 @@
+<div class="p-8" data-controller="booking">
+  <div class="mb-4">
+    <button data-action="click->booking#showAllBookings" class="btn btn-primary mr-2">Approved Bookings</button>
+    <button data-action="click->booking#showBookingRequests" class="btn btn-primary">Booking Requests</button>
+    <button data-action="click->booking#showCompletedBookings" class="btn btn-primary">Completed Bookings</button>
+  </div>
+  <div id="allBookings" class="booking-table">
+    <%= turbo_stream.append "allBookings" do %>
+      <%= render partial: 'bookings', locals: { bookings: @approved_bookings } %>
+    <% end %>
+  </div>
+  <div id="bookingRequests" class="booking-table" style="display: none;">
+    <%= turbo_stream.append "bookingRequests" do %>
+      <%= render partial: 'bookings', locals: { bookings: @booking_requests } %>
+    <% end %>
+  </div>
+ <div id="completedBookings" class="booking-table" style="display: none;">
+    <%= turbo_stream.append "completedBookings" do %>
+      <%= render partial: 'bookings', locals: { bookings: @completed_bookings } %>
+    <% end %>
+  </div>
+
+
+</div>

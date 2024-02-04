@@ -1,4 +1,3 @@
-# app/controllers/seller/services_controller.rb
 class Seller::ServicesController < Seller::DashboardController
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :set_service, only: %i[show destroy reapprove]
@@ -43,6 +42,6 @@ class Seller::ServicesController < Seller::DashboardController
   end
 
   def service_params
-    params.require(:service).permit(:title, :description, :category_id, :price, :reapproval_request, :rejection_reason)
+    params.require(:service).permit(:title, :description, :category_id, :price, :reapproval_request, :rejection_reason, :avatar)
   end
 end

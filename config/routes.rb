@@ -3,6 +3,14 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  get 'home/all_services', to: 'home#all_services', as: 'all_services'
+  get 'home/show/:id', to: 'home#show', as: :service
+  get 'home/book_service/:id', to: 'home#book_service', as: :home_book_service
+
+  namespace :customers do
+    resources :bookings, only: %i[new create]
+  end
+
   namespace :admin do
     resources :categories
     get 'dashboard/index'
@@ -11,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :seller do
     get 'dashboard/index'
+    resources :bookings, only: [:index, :edit, :update]
     resources :services do
       member do
         patch 'reapprove' # Adds a custom route for reapproval

@@ -1,27 +1,49 @@
-<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="<%= root_path %>">
-      <%= image_tag("homelyhelp.png", alt: "Homely Help Icon", class: "navbar-logo") %>
-      <span class="ml-2 navbar-logo-name">Homely Help<span></span></span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsFurni">
-      <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li><a class="nav-link" href="admin/dashboard/index">Admin</a></li>
-        <li><a class="nav-link" href="seller/dashboard/index">Seller</a></li>
-      </ul>
-      <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-        <% if user_signed_in? %>
-          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn-logout" %>
-        <% else %>
-          <li><%= link_to "Log In", new_user_session_path, class: "nav-link" %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
+<header class="fixed w-full">
+    <nav class="bg-[#030637] border-gray-200 py-2.5 dark:bg-gray-900">
+        <div class="container mx-auto flex items-center justify-between px-4">
+            <!-- Logo and Site Name -->
+            <a href="<%= root_path %>" class="flex items-center">
+                <%= image_tag("logo-home.svg", alt: "Homely Help Icon", class: "navbar-logo h-6") %>
+            </a>
+            <!-- Search Bar -->
+            <%= form_tag(all_services_path, method: :get, class: "md:flex items-center") do %>
+                <%= text_field_tag :search, params[:search], class: "px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:border-purple-700 bg-gray-100 text-sm", placeholder: "Search..." %>
+                <%= submit_tag "Search", class: "px-4 py-2 bg-[#910A67] text-white rounded-md ml-2" %>
+            <% end %>
+            <!-- Navigation Links -->
+            <ul class="flex items-center space-x-4 lg:space-x-8">
+                <li>
+                    <%= link_to("Home", root_path, class: "nav-link") %>
+                </li>
+
+
+            
+            <% if user_signed_in? %>
+                    <% if current_user.admin? %>
+                        <%= link_to("Admin", admin_dashboard_index_path, class: "nav-link") %>
+                    <% elsif current_user.seller? %> 
+                        <%= link_to("Seller", seller_dashboard_index_path, class: "nav-link") %>
+                    <% else %>
+                        <%= link_to("Customer", "#", class: "nav-link") %>
+                    <% end %>
+                <% end %>
+                
+                <li>
+                    <%= link_to("Services", all_services_path, class: "nav-link") %>
+                </li>
+            </ul>
+            <!-- Logout / Login Button -->
+            <div>
+               <div>
+  <% if user_signed_in? %>
+    <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "px-4 py-2 bg-[#910A67] bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800 btn-logout" %>
+  <% else %>
+    <%= link_to "Log In", new_user_session_path, class: "px-4 py-2 bg-[#910A67] text-white rounded-md hover:bg-[#7A0958] focus:outline-none focus:shadow-outline-purple active:bg-[#5E0844] btn-login" %>
+  <% end %>
+</div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+

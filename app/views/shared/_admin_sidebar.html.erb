@@ -1,16 +1,37 @@
-<nav class="w-74 bg-[#3b5d50] h-full p-4">
+<nav class="w-64 bg-[#030637] h-full p-4 pt-30">
   <!-- Logo -->
-  <div class="mb-8">
+  <div class="mb-6 text-center">
     <%= link_to root_path do %>
-      <%= image_tag('homelyhelp.png', class: 'mx-auto') %>
+      <%= image_tag('logo-home.svg', class: 'mx-auto h-5') %>
     <% end %>
   </div>
 
-  <ul class="space-y-2">
-    <li><%= link_to 'Categories', admin_categories_path, class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'categories-link' %></li>
-    <li><%= link_to 'Services',   admin_services_path, class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'service-requests-link' %></li>
-    <li><%= link_to 'Approved Requests', '#', class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'approved-requests-link' %></li>
-    <li><%= link_to 'All Services', '#', class: 'block py-2 px-4 text-white hover:bg-gray-700', id: 'all-services-link' %></li>
+  <!-- Navigation Links with Icons -->
+  <ul class="space-y-4">
+    <li>
+      <%= link_to admin_categories_path, class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'categories-link' do %>
+        <i class="fas fa-th-large text-lg mr-2"></i>
+        Categories
+      <% end %>
+    </li>
+    <li>
+      <%= link_to admin_services_path, class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'service-requests-link' do %>
+        <i class="fas fa-tools text-lg mr-2"></i>
+        Services
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'approved-requests-link' do %>
+        <i class="fas fa-check-circle text-lg mr-2"></i>
+        Approved Requests
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'flex items-center py-2 px-4 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none', id: 'all-services-link' do %>
+        <i class="fas fa-list-alt text-lg mr-2"></i>
+        All Services
+      <% end %>
+    </li>
     <!-- Add more options as needed -->
   </ul>
 </nav>
