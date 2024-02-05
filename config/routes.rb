@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   namespace :seller do
     get 'dashboard/index'
-    resources :services
+    resources :services do
+      member do
+        patch 'reapprove' # Adds a custom route for reapproval
+      end
+    end
   end
   devise_for :users, path: '', path_names: { sign_in: 'login' },
                      controllers: { sessions: 'users/sessions', passwords: 'users/passwords' }

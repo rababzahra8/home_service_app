@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th class="py-2 px-4 border-b">Title</th>
-      <th class="py-2 px-4 border-b">Status</th>
+      <th class="py-2 px-4 border-b">Current Status</th>
       <th class="py-2 px-4 border-b">Actions</th>
-      <th class="py-2 px-4 border-b">Comment</th>
+      <th class="py-2 px-4 border-b">Rejection Comment</th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +17,7 @@
         <td class="py-2 px-4 border-b">
           <%= render 'status_form', service: service %>
         </td>
-        <td class="py-2 px-4 border-b"><%= service.comment %></td>
+        <td class="py-2 px-4 border-b"><%= service.rejection_reason %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,19 +1,35 @@
 <!-- app/views/seller/services/index.html.erb -->
-<div class="bg-gradient-to-r from-green-400 to-yellow-500 p-8 text-white">
-  <h1 class="text-2xl font-bold mb-4">Your Services</h1>
-
+<div class="p-8 text-black">
+  <h1 class="text-3xl font-bold mb-6">Your Services</h1>
   <% if @services.any? %>
-    <% @services.each do |service| %>
-      <!-- Display information about each service -->
-      <div class="mb-4">
-        <p class="mb-2"><%= service.title %> - Status: <%= service.status %></p>
-        <!-- Additional details as needed -->
-        <%= link_to 'View Details', seller_service_path(service), class: 'text-blue-500 underline' %>
-      </div>
-    <% end %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <% @services.each do |service| %>
+        <!-- Service Card with Pastel Colors -->
+        <div class="bg-green-200 p-6 rounded-md shadow-lg transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+          <p class="mb-4 text-lg font-semibold"><strong>Title:</strong> <%= service.title %></p>
+          <p class="mb-4"><strong>Status:</strong> <%= service.status %></p>
+
+          <% if service.rejected? %>
+            <p class="mb-4 text-red-600"><strong>Rejection Reason:</strong> <%= service.rejection_reason %></p>
+
+            <%= link_to 'Edit Service', edit_seller_service_path(service), class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out transform hover:-translate-y-1' %>
+
+            <%= form_with(model: service, url: reapprove_seller_service_path(service), method: :patch) do |form| %>
+              <div class="mb-4">
+                <%= form.label :reapproval_request, 'Comment for Reapproval Request:', class: 'block text-gray-700 text-sm font-bold mb-2' %>
+                <%= form.text_area :reapproval_request, class: 'resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+              </div>
+              <%= form.submit 'Send Reapproval Request', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out transform hover:-translate-y-1' %>
+            <% end %>
+          <% end %>
+
+          <%= link_to 'View Details', seller_service_path(service), class: 'text-blue-500 underline block mt-4' %>
+        </div>
+      <% end %>
+    </div>
   <% else %>
     <p class="text-gray-500">No services available.</p>
   <% end %>
 
-  <%= link_to 'Create New Service', new_seller_service_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+  <%= link_to 'Create New Service', new_seller_service_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6 inline-block transition duration-300 ease-in-out transform hover:-translate-y-1' %>
 </div>

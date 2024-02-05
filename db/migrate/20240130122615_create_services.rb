@@ -7,7 +7,8 @@ class CreateServices < ActiveRecord::Migration[7.1]
       t.text :description
       t.references :category, null: false, foreign_key: true
       t.string :status
-      t.string :comment
+      t.string :rejection_reason
+      t.string :reapproval_request
       t.integer :price, null: false, default: 0
       t.references :user, null: false, foreign_key: true
 
