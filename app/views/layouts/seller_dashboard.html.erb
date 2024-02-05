@@ -13,13 +13,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   </head>
- <body class="text-green-700 font-sans">
-  <div class="flex h-screen bg-white">
-    <!-- Sidebar -->
-   <%= render "shared/seller_sidebar" %>
-    <!-- Main Content -->
-    <div class="flex-1 dashboard-container" id="main-content">
-      <%= yield %>
+  <body class="text-green-700 font-sans">
+    <div class="flex h-screen bg-white">
+      <%= render "shared/seller_sidebar" %>
+      <div class="flex-1 dashboard-container" id="main-content">
+        <%= yield %>
+      </div>
     </div>
-  </div>
-</html>
+  </html>

@@ -1,8 +1,8 @@
 <%= form_for(service, url: admin_service_path(service), method: :patch) do |form| %>
   <%= form.hidden_field :status, value: 'approved' %>
   <% if service.pending? %>
-    <%= form.submit 'Approve', class: 'btn btn-success ml-2' %>
-      <%= button_tag 'Reject', type: 'button', class: 'btn btn-danger ml-2 btn-reject', data: { bs_toggle: 'modal', bs_target: '#rejectionModal' } if service.pending? || service.rejected? %>
+    <%= form.submit 'Approve', class: 'bg-green-500 text-white px-4 py-2 rounded mr-2' %>
+      <%= button_tag 'Reject', type: 'button', class: 'bg-red-500 text-white px-4 py-2 rounded', data: { bs_toggle: 'modal', bs_target: '#rejectionModal' } if service.pending? || service.rejected? %>
   <% end %>
 <% end %>
 <div class="modal fade" id="rejectionModal" tabindex="-1" aria-labelledby="rejectionModalLabel" aria-hidden="true">

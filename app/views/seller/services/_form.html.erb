@@ -1,41 +1,31 @@
-<div class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
-  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+<div class="bg-white-100 flex flex-col justify-center sm:py-4">
+  <div class="relative py-3 sm:max-w-md sm:mx-auto">
     <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-    <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+    <div class="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-8">
       <div class="max-w-md mx-auto">
-        <div>
-          <h1 class="text-2xl font-semibold">New Service</h1>
-        </div>
-        <%= form_with(model: @service, url: seller_services_path, method: :post, class: 'py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7') do |form| %>
-          <div class="mb-4">
-            <%= form.label :title, class: 'block text-gray-700 text-sm font-bold mb-2' %>
+          <div class="mb-2">
+            <%= form.label :title, class: 'block text-gray-700 text-sm font-bold mb-1' %>
             <%= form.text_field :title, class: 'form-input' %>
           </div>
-
-          <div class="mb-4">
-            <%= form.label :description, class: 'block text-gray-700 text-sm font-bold mb-2' %>
+          <div class="mb-2">
+            <%= form.label :description, class: 'block text-gray-700 text-sm font-bold mb-1' %>
             <%= form.text_area :description, class: 'form-input' %>
           </div>
-
-          <div class="mb-4">
-            <%= form.label :category_id, class: 'block text-gray-700 text-sm font-bold mb-2' %><br>
+          <div class="mb-2">
+            <%= form.label :category_id, class: 'block text-gray-700 text-sm font-bold mb-1' %><br>
             <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Select a category' }, class: 'form-select' %>
           </div>
-
-          <div class="mb-4">
-            <%= form.label :price, class: 'block text-gray-700 text-sm font-bold mb-2' %><br>
+          <div class="mb-2">
+            <%= form.label :price, class: 'block text-gray-700 text-sm font-bold mb-1' %><br>
             <%= form.number_field :price, class: 'form-input' %>
           </div>
-
-          <div class="mb-4">
-            <%= form.label :avatar, class: 'block text-gray-700 text-sm font-bold mb-2' %><br>
+          <div class="mb-2">
+            <%= form.label :avatar, class: 'block text-gray-700 text-sm font-bold mb-1' %><br>
             <%= form.file_field :avatar, direct_upload: true, data: { previews_target: "input", action: "change->previews#preview" }, class: 'form-input' %>
           </div>
-
-          <div class="mb-6">
-            <%= form.submit 'Save', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+          <div class="mb-4">
+          <%= form.submit 'Save', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
           </div>
-        <% end %>
       </div>
     </div>
   </div>

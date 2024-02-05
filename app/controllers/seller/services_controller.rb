@@ -1,9 +1,10 @@
 class Seller::ServicesController < Seller::DashboardController
   before_action :authenticate_seller!, only: %i[create destroy]
-  before_action :set_service, only: %i[show destroy reapprove]
+  before_action :set_service, only: %i[show destroy reapprove edit update]
 
   def index
-    @services = current_user.services
+    @approved_services = Service.where(status: 'approved')
+    @pending_services = Service.where(status: 'pending')
   end
 
   def show
@@ -13,6 +14,8 @@ class Seller::ServicesController < Seller::DashboardController
   def new
     @service = current_user.services.build
   end
+
+  def edit; end
 
   def create
     @service = current_user.services.build(service_params.merge(status: 'pending'))
@@ -24,12 +27,22 @@ class Seller::ServicesController < Seller::DashboardController
     end
   end
 
+  def update
+    if @service.update(service_params)
+      redirect_to seller_services_path, notice: 'Service was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @service.destroy
     redirect_to seller_services_path, notice: 'Service was successfully deleted.'
   end
 
   def reapprove
+    @services = Service.where(status: 'rejected')
+
     @service.update(status: 'reapproval', reapproval_request: params[:service][:reapproval_request])
 
     redirect_to seller_services_path, notice: 'Reapproval request sent successfully.'

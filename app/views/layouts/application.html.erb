@@ -16,17 +16,14 @@
     <meta name="theme-color" content="#ffffff">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Loopple/loopple-public-assets@main/motion-tailwind/motion-tailwind.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
   </head>
   <body>
     <%= render partial: "shared/navbar" %>
     <%= render 'shared/flash_messages' if flash.any? %>
-      <div class="mb-8"> <!-- Add margin to the bottom of the yield content -->
-        <%= yield %>
-              </div>
-
-      </div>
-    <%# <%= render partial: "shared/footer" %>
-  </body>
+    <div class="mb-8"> <!-- Add margin to the bottom of the yield content -->
+      <%= yield %>
+    </div>
+  </div>
+  <%= render partial: "shared/footer" %>
+</body>
 </html>

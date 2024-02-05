@@ -1,7 +1,9 @@
-<div class="container flex justify-center items-center ">
+<div class="container flex justify-center items-center">
   <div class="text-center">
     <h1 class="text-3xl font-bold mb-4 text-white">New Category</h1>
-    <%= render 'form' %>
+    <%= form_with(model: @service, url: seller_services_path, method: :post, class: 'py-4 text-base leading-6 space-y-2 text-gray-700 sm:text-lg sm:leading-7') do |form| %>
+      <%= render 'form', form: form %>
+    <% end %>
     <%= link_to 'Back', seller_dashboard_index_path, class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
   </div>
 </div>

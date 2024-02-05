@@ -1,9 +1,8 @@
- 
-  <div class="image-container">
-    <% if service.avatar.attached? %>
-      <%= image_tag service.avatar, data: { previews_target: "preview" }, class: "w-64 h-64" %>
-    <% else %>
-      <%= image_tag "", data: { previews_target: "preview" }, class: "image" %>
-    <% end %>
-  </div>
-  </div>
+<div class="image-container">
+  <% if service.avatar.attached? %>
+    <%= image_tag service.avatar, data: { previews_target: "preview" }, class: "w-64 h-64" %>
+  <% else %>
+    <%= image_tag "", data: { previews_target: "preview" }, class: "image" %>
+  <% end %>
+</div>
+</div>

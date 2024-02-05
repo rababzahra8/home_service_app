@@ -1,6 +1,4 @@
-<!-- app/views/admin/services/_service_item.html.erb -->
 <p><%= service.title %> - Status: <%= service.status %></p>
-
 <%= turbo_frame_tag "action_#{service.id}" do %>
   <%= render 'admin/services/service_form', service: service %>
 <% end %>

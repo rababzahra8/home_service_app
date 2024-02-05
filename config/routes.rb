@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'home/all_services', to: 'home#all_services', as: 'all_services'
   get 'home/show/:id', to: 'home#show', as: :service
   get 'home/book_service/:id', to: 'home#book_service', as: :home_book_service
+  post '/payments/create', to: 'payments#create', as: 'payments_create'
+  get '/categories/:category_id/services', to: 'services#index', as: 'category_services'
 
   namespace :customers do
     resources :bookings, only: %i[new create]

@@ -2,15 +2,18 @@
 
 class HomeController < ApplicationController
   def index
-    @services = Service.where(status: 'approved').limit(4)
+    @services = Service.where(status: 'approved')
   end
 
   def all_services
-    @services = if params[:search].present?
-                  Service.where(status: 'approved').where('LOWER(title) LIKE ?', "%#{params[:search].downcase}%")
-                else
-                  Service.where(status: 'approved')
-                end
+    @categories = Category.all
+
+    if params[:category_id].present?
+      @selected_category = Category.find(params[:category_id])
+      @services = @selected_category.services
+    else
+      @services = Service.all
+    end
   end
 
   def show

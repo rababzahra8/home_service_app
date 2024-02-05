@@ -13,3 +13,25 @@ User.create!(
   password: '12345678'
   # Set other attributes as needed
 )
+
+# Seller User
+User.create!(
+  email: 'sam@gmail.com',
+  name: 'Seller User',
+  age: 30, # Set the desired age
+  gender: 'female', # Set the desired gender
+  role: 'seller',
+  password: '12345678'
+  # Set other attributes as needed
+)
+
+# Customer User
+User.create!(
+  email: 'cam@gmailcom',
+  name: 'Customer User',
+  age: 22, # Set the desired age
+  gender: 'female', # Set the desired gender
+  role: 'customer',
+  password: '12345678'
+  # Set other attributes as needed
+)
