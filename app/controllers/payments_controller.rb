@@ -10,12 +10,10 @@ class PaymentsController < ApplicationController
     )
 
     # Update the booking or record the successful payment
-    booking = current_user.bookings.new(service: service, status: 'booked')
+    booking = current_user.bookings.new(service:, status: 'booked')
 
     if booking.save
       # Assuming that a service can have multiple bookings and you want to update the status of the service
-      service.update(status: 'sold')
-
       flash[:success] = 'Your Service is booked seller will contact you.'
     else
       flash[:error] = 'Failed to create booking.'

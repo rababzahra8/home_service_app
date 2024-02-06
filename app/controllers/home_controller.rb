@@ -11,10 +11,6 @@ class HomeController < ApplicationController
     if params[:category_id].present?
       @selected_category = Category.find(params[:category_id])
       @services = @selected_category.services.where(status: 'approved')
-      # render turbo_stream: [
-      #   turbo_stream.replace('catageory', partial: 'servicces', locals: { service: @services })
-      #   turbo_stream.remove('')
-      # ]
     else
       @services = Service.where(status: 'approved')
     end

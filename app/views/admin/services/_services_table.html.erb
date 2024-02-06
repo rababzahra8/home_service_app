@@ -9,7 +9,9 @@
       <div class="mb-2">
         <%= render 'status_form', service: service %>
       </div>
+      <% if service.status == 'rejected' %>
       <p class="text-sm text-gray-600"><%= service.rejection_reason %></p>
+      <% end %>
     </div>
   <% end %>
 </div>

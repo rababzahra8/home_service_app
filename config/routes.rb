@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   post '/payments/create', to: 'payments#create', as: 'payments_create'
   get '/categories/:category_id/services', to: 'services#index', as: 'category_services'
 
-  namespace :customers do
-    resources :bookings, only: %i[new create]
+  namespace :customer do
+    get 'dashboard/index'
+    resources :bookings, only: %i[index new create]
+    resources :reviews, only: %i[index create new]
   end
 
   namespace :admin do
@@ -21,10 +23,10 @@ Rails.application.routes.draw do
 
   namespace :seller do
     get 'dashboard/index'
-    resources :bookings, only: [:index, :edit, :update]
+    resources :bookings, only: %i[index edit update]
     resources :services do
       member do
-        patch 'reapprove' # Adds a custom route for reapproval
+        patch 'reapprove'
       end
     end
   end

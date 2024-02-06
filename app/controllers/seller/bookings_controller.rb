@@ -1,9 +1,7 @@
-module Seller
-  class BookingsController < Seller::DashboardController
-    # before_action :authenticate_seller!
+class BookingsController < Seller::DashboardController
+  # before_action :authenticate_seller!
 
-    def index
-      @approved_bookings = Booking.where(status: 'booked')
-    end
+  def index
+    @approved_bookings = Booking.where(status: 'booked')
   end
 end

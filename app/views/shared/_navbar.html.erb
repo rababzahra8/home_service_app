@@ -18,7 +18,7 @@
           <% elsif current_user.seller? %>
             <%= link_to("Seller", seller_dashboard_index_path, class: "nav-link") %>
           <% else %>
-            <%= link_to("Customer", "#", class: "nav-link") %>
+            <%= link_to("Customer", customer_dashboard_index_path, class: "nav-link") %>
           <% end %>
         <% end %>
         <li>

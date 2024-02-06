@@ -4,7 +4,7 @@
     <%= turbo_frame_tag "catageory" do %>
       <div class="flex mb-4 space-x-4">
         <% @categories.each do |category| %>
-          <%= link_to category.name, all_services_path(category_id: category.id), class: "bg-blue-500 text-white px-4 py-2 rounded", data: { turbo_frame: "my-categeory"} %>
+          <%= link_to category.name, all_services_path(category_id: category.id), class: "bg-blue-500 text-white px-4 py-2 rounded", data: { turbo_frame: "my-category"} %>
         <% end %>
       </div>
       <%= render "services", services: @services %>
