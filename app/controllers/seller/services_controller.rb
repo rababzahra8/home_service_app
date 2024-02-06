@@ -5,6 +5,8 @@ class Seller::ServicesController < Seller::DashboardController
   def index
     @approved_services = Service.where(status: 'approved')
     @pending_services = Service.where(status: 'pending')
+    @rejected_services = Service.where(status: 'rejected')
+    @reapproval_request = Service.where(status: 'reapproval')
   end
 
   def show

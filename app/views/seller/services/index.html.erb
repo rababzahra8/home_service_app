@@ -1,21 +1,33 @@
 <div class="dashboard-container">
-    <div class="absolute top-20 right-60 p-4">
-      <%= link_to 'Create New Service', new_seller_service_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out transform hover:-translate-y-1' %>
+  <div class="absolute top-20 right-60 p-4">
+    <%= link_to 'Create New Service', new_seller_service_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out transform hover:-translate-y-1' %>
+  </div>
+  <div class="p-8" data-controller="booking">
+    <div class="mb-4">
+      <button data-action="click->booking#showAllBookings" class="btn btn-primary mr-2">Approved Bookings</button>
+      <button data-action="click->booking#showBookingRequests" class="btn btn-primary">Booking Requests</button>
+      <button data-action="click->booking#showRejectedBookings" class="btn btn-primary">Rejected Requests</button>
+      <button data-action="click->booking#showReapprovalRequests" class="btn btn-primary">Reapproval Requests</button>
     </div>
-    <div class="p-8" data-controller="booking">
-      <div class="mb-4">
-        <button data-action="click->booking#showAllBookings" class="btn btn-primary mr-2">Approved Bookings</button>
-        <button data-action="click->booking#showBookingRequests" class="btn btn-primary">Booking Requests</button>
-      </div>
-      <div id="allBookings" class="booking-table">
-        <%= turbo_stream.append "allBookings" do %>
-          <%= render partial: 'bookings', locals: { services: @approved_services} %>
-        <% end %>
-      </div>
-      <div id="bookingRequests" class="booking-table" style="display: none;">
-        <%= turbo_stream.append "bookingRequests" do %>
-          <%= render partial: 'bookings', locals: { services: @pending_services } %>
-        <% end %>
-      </div>
+    <div id="allBookings" class="booking-table">
+      <%= turbo_stream.append "allBookings" do %>
+        <%= render partial: 'bookings', locals: { services: @approved_services} %>
+      <% end %>
     </div>
+    <div id="bookingRequests" class="booking-table" style="display: none;">
+      <%= turbo_stream.append "bookingRequests" do %>
+        <%= render partial: 'bookings', locals: { services: @pending_services } %>
+      <% end %>
+    </div>
+    <div id="rejectedBookings" class="booking-table" style="display: none;">
+      <%= turbo_stream.append "rejectedBookings" do %>
+        <%= render partial: 'bookings', locals: { services: @rejected_services } %>
+      <% end %>
+    </div>
+    <div id="reapprovalRequests" class="booking-table" style="display: none;">
+      <%= turbo_stream.append "reapprovalRequests" do %>
+        <%= render partial: 'bookings', locals: { services: @reapproval_request } %>
+      <% end %>
+    </div>
+  </div>
 </div>
