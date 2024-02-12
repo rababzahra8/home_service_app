@@ -16,8 +16,9 @@
   <body class="text-green-700 font-sans">
     <div class="flex h-screen bg-white">
       <%= render "shared/seller_sidebar" %>
-      <div class="flex-1 dashboard-container" id="main-content">
+      <div class="flex-1 overflow-y-auto p-4">
         <%= yield %>
       </div>
     </div>
-  </html>
+  </body>
+</html>

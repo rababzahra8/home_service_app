@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include DeviseParamsSetter
+  include Pagy::Backend
 
   protected
 
@@ -26,4 +27,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user.customer?
   end
 
+  rescue_from CanCan::AccessDenied do |_exception|
+    flash[:alert] = 'Access denied.'
+    redirect_to root_url
+  end
 end

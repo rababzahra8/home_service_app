@@ -3,10 +3,10 @@ class Seller::ServicesController < Seller::DashboardController
   before_action :set_service, only: %i[show destroy reapprove edit update]
 
   def index
-    @approved_services = Service.where(status: 'approved')
-    @pending_services = Service.where(status: 'pending')
-    @rejected_services = Service.where(status: 'rejected')
-    @reapproval_request = Service.where(status: 'reapproval')
+    @pagy_approved, @approved_services = pagy(Service.where(status: 'approved'))
+    @pagy_pending, @pending_services = pagy(Service.where(status: 'pending'))
+    @pagy_rejected, @rejected_services = pagy(Service.where(status: 'rejected'))
+    @pagy_reapproval, @reapproval_request = pagy(Service.where(status: 'reapproval'))
   end
 
   def show

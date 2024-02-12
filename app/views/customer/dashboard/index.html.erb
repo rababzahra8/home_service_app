@@ -1,0 +1,25 @@
+<div class="dashboard-container">
+  <main class="container mx-auto mt-8 relative z-10">
+    <section class="bg-transparent p-8 rounded-md shadow-md relative z-10">
+      <div class="flex items-start">
+        <div>
+          <%= image_tag("admin-services.jpg", alt: "Dashboard Image", class: "w-40 h-40") %>
+        </div>
+        <div class="ml-3">
+          <h1 class="text-2xl font-semibold mb-2">Welcome, <%= @user.name %></h1>
+          <p class="text-gray-500">Email: <%= @user.email %></p>
+          <p class="text-gray-500">Role: <%= @user.role %></p>
+          <div class="flex items-end">
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: 'px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue' %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mt-8 bg-[#030637] p-8 rounded-md shadow-md relative z-10">
+      <div class="mb-4">
+        <h2 class="text-2xl font-semibold mb-2">Booked Services</h2>
+        <p class="text-gray-500">Total: <%= @booked_services %> services</p>
+      </div>
+    </section>
+  </main>
+</div>

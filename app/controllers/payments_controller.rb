@@ -8,12 +8,9 @@ class PaymentsController < ApplicationController
       source: params[:stripeToken],
       description: "Payment for #{service.title}"
     )
-
-    # Update the booking or record the successful payment
     booking = current_user.bookings.new(service:, status: 'booked')
 
     if booking.save
-      # Assuming that a service can have multiple bookings and you want to update the status of the service
       flash[:success] = 'Your Service is booked seller will contact you.'
     else
       flash[:error] = 'Failed to create booking.'
@@ -22,6 +19,6 @@ class PaymentsController < ApplicationController
     redirect_to root_path
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_payment_path(service_id: service.id)
+    redirect_to root_path
   end
 end

@@ -1,26 +1,28 @@
-<div class="p-8" data-controller="booking">
-  <div class="mb-4">
-    <div class="text-[#030637] text-2xl font-bold mb-4">Bookings</div>
-  </div>
-  <div id="allBookings" class="booking-table">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-      <% @approved_bookings.each do |booking| %>
-        <div class="max-w-sm bg-white p-6 rounded-md shadow-md">
-          <%= image_tag booking.service.avatar, class: 'w-full h-32 object-cover mb-4 rounded-md' %>
-          <p class="text-lg font-semibold text-[#030637]">User: <%= booking.user.name %></p>
-          <p class="text-[#030637]">Email: <%= booking.user.email %></p>
-          <p class="text-lg text-[#030637] font-semibold mt-2">Service: <%= booking.service.title %></p>
-          <p class="text-[#030637]">Description: <%= booking.service.description %></p>
-          <p class="text-lg  text-[#030637] font-semibold mt-2">Status: <%= booking.status %></p>
-          <p class="text-lg text-[#030637] font-semibold mt-2">Price: <%= booking.service.price %></p>
-          <% if booking.status == 'pending' %>
-            <div class="flex mt-4">
-              <%= button_to 'Approve', seller_booking_path(booking, status: 'approved'), method: :patch, class: 'bg-green-500 text-white px-4 py-2 rounded mr-2' %>
-              <%= button_to 'Reject', seller_booking_path(booking, status: 'rejected'), method: :patch, class: 'bg-red-500 text-white px-4 py-2 rounded' %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+<div class="dashboard-container">
+  <div class="p-8" data-controller="booking">
+    <div class="mb-4">
+      <div class="text-[#030637] text-2xl font-bold mb-4">Bookings</div>
+    </div>
+    <div id="allBookings" class="booking-table">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <% @approved_bookings.each do |booking| %>
+          <div class="max-w-sm bg-white p-6 rounded-md shadow-md">
+            <%= image_tag booking.service.avatar, class: 'w-full h-32 object-cover mb-4 rounded-md' %>
+            <p class="text-lg font-semibold text-[#030637]">User: <%= booking.user.name %></p>
+            <p class="text-[#030637]">Email: <%= booking.user.email %></p>
+            <p class="text-lg text-[#030637] font-semibold mt-2">Service: <%= booking.service.title %></p>
+            <p class="text-[#030637]">Description: <%= booking.service.description %></p>
+            <p class="text-lg  text-[#030637] font-semibold mt-2">Status: <%= booking.status %></p>
+            <p class="text-lg text-[#030637] font-semibold mt-2">Price: <%= booking.service.price %></p>
+            <% if booking.status == 'pending' %>
+              <div class="flex mt-4">
+                <%= button_to 'Approve', seller_booking_path(booking, status: 'approved'), method: :patch, class: 'bg-green-500 text-white px-4 py-2 rounded mr-2' %>
+                <%= button_to 'Reject', seller_booking_path(booking, status: 'rejected'), method: :patch, class: 'bg-red-500 text-white px-4 py-2 rounded' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

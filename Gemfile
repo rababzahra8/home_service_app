@@ -18,6 +18,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
 gem 'sassc-rails'
+gem 'pagy'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
@@ -37,6 +38,7 @@ gem 'stripe'
 gem 'jbuilder'
 gem 'mini_mime'
 gem 'image_processing', '~> 1.2'
+gem 'cancancan'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '>= 4.0.1'

@@ -6,7 +6,8 @@ module Customer
     before_action :authenticate_user!
 
     def index
-      @booked_services = current_user.bookings.includes(:service).map(&:service)
+      @user = current_user
+      @booked_services = current_user.bookings.includes(:service).map(&:service).count
     end
   end
 end

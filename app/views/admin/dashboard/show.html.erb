@@ -1,0 +1,8 @@
+<!-- app/views/admin/dashboard/show.html.erb -->
+<h1 class="text-2xl font-semibold mb-4">User Details</h1>
+<div class="bg-[#030637] p-4 rounded-md shadow-md">
+  <h2 class="text-lg font-semibold mb-2">Username: <%= @user.name %></h2>
+  <p class="text-white">Email: <%= @user.email %></p>
+  <p class="text-white">Role: <%= @user.role %></p>
+  <%= button_to 'Delete User', admin_dashboard_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline inline-block bg-transparent font-bold py-2 px-4 border border-red-500 rounded' %>
+</div>
